@@ -1,7 +1,8 @@
 name: Update gist
 on:
-  repository_dispatch:
-    types: [build-event]
+  push:
+    branches:
+      - master
   schedule:
     - cron: "0 0 * * *"
 jobs:
@@ -11,6 +12,6 @@ jobs:
       - name: Update gist
         uses: maxam2017/productive-box@master
         env:
-          GH_TOKEN: ${{ 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 }}
-          GIST_ID: 154396d01b85ae9a07e60e68fd385588
-          TIMEZONE: Asia/Taipei
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GIST_ID: ${{ secrets.GIST_ID }}
+          TIMEZONE: Asia/Seoul
